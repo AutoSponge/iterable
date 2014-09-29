@@ -1,0 +1,17 @@
+{
+  "name": "iterable",
+  "version": "0.0.0",
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "--enable-benchmarking"
+  },
+  "author": "Paul Grenier <pgrenier@gmail.com> (http://autosponge.github.io/)",
+  "license": "MIT",
+  "devDependencies": {
+    "benchmark": "^1.0.0",
+    "traceur": "0.0.66"
+  }
+}
