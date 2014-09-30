@@ -3,9 +3,9 @@ var map1 = ( fn, iterable ) => [for (i of iterable) i].map( fn );
 var map2 = ( fn, iterable ) => [...iterable].map( fn );
 var map3 = ( fn, iterable ) => [for (i of iterable) fn( i )];
 
-var reduce1 = ( fn, iterable, a ) => [for (i of iterable) i].reduce( fn, a );
-var reduce2 = ( fn, iterable, a ) => [...iterable].reduce( fn, a );
-var reduce3 = ( fn, iterable, a ) => {
+var reduce1 = ( fn, a, iterable ) => [for (i of iterable) i].reduce( fn, a );
+var reduce2 = ( fn, a, iterable ) => [...iterable].reduce( fn, a );
+var reduce3 = ( fn, a, iterable ) => {
     var b = a;
     for ( let i of iterable ) {
         b = fn( b, i );
@@ -110,43 +110,43 @@ test2.suite.add( 'native reduce array', function () {
     console.assert( [1, 2, 3].reduce( add, 2 ) === 8 );
 } )
     .add( 'reduce1 array', function () {
-        console.assert( reduce1( add, [1, 2, 3], 2 ) === 8 );
+        console.assert( reduce1( add, 2, [1, 2, 3] ) === 8 );
     } )
     .add( 'reduce2 array', function () {
-        console.assert( reduce2( add, [1, 2, 3], 2 ) === 8 );
+        console.assert( reduce2( add, 2, [1, 2, 3] ) === 8 );
     } )
     .add( 'reduce3 array', function () {
-        console.assert( reduce3( add, [1, 2, 3], 2 ) === 8 );
+        console.assert( reduce3( add, 2, [1, 2, 3] ) === 8 );
     } )
 
     .add( 'reduce1 iterable', function () {
-        console.assert( reduce1( add, iterable, 2 ) === 8 );
+        console.assert( reduce1( add, 2, iterable ) === 8 );
     } )
     .add( 'reduce2 iterable', function () {
-        console.assert( reduce2( add, iterable, 2 ) === 8 );
+        console.assert( reduce2( add, 2, iterable ) === 8 );
     } )
     .add( 'reduce3 iterable', function () {
-        console.assert( reduce3( add, iterable, 2 ) === 8 );
+        console.assert( reduce3( add, 2, iterable ) === 8 );
     } )
 
     .add( 'reduce1 set', function () {
-        console.assert( reduce1( add, s, 2 ) === 8 );
+        console.assert( reduce1( add, 2, s ) === 8 );
     } )
     .add( 'reduce2 set', function () {
-        console.assert( reduce2( add, s, 2 ) === 8 );
+        console.assert( reduce2( add, 2, s ) === 8 );
     } )
     .add( 'reduce3 set', function () {
-        console.assert( reduce3( add, s, 2 ) === 8 );
+        console.assert( reduce3( add, 2, s ) === 8 );
     } )
 
     .add( 'reduce1 generator', function () {
-        console.assert( reduce1( add, gen(), 2 ) === 8 );
+        console.assert( reduce1( add, 2, gen() ) === 8 );
     } )
     .add( 'reduce2 generator', function () {
-        console.assert( reduce2( add, gen(), 2 ) === 8 );
+        console.assert( reduce2( add, 2, gen() ) === 8 );
     } )
     .add( 'reduce3 generator', function () {
-        console.assert( reduce3( add, gen(), 2 ) === 8 );
+        console.assert( reduce3( add, 2, gen() ) === 8 );
     } )
 // add listeners
     .on( 'cycle', function ( event ) {
