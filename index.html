@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h1 id="message"></h1>
 <script src="node_modules/benchmark/benchmark.js"></script>
 <script src="node_modules/traceur/bin/traceur.js"></script>
 <script>
@@ -11,8 +10,6 @@
     traceur.options.experimental = true;
 </script>
 <script type="module" src="test/test.js"></script>
-<div id="status"></div>
-<ul id="tests"></ul>
-<div id="results"></div>
+<div id="messages"></div>
 </body>
 </html>
